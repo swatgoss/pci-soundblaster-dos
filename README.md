@@ -9,6 +9,9 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 - SB0350
   - DOS 6.22
   - Win98 SE
+  
+- VX800
+  - Programming Manual + description
 
 # External Information sources
 
