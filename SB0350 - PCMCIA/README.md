@@ -2,7 +2,8 @@
 EMU10K2 audio chip ?
 
 # DOS 6.22
-TODO
+TODO and TEST with inspiration from :
+- https://www.vogons.org/viewtopic.php?t=58789
 
 # Reviews
 http://www.notebookreview.com/notebookreview/creative-sound-blaster-audigy-2-zs-notebook-sound-card-review/
