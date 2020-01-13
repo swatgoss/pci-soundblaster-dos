@@ -9,4 +9,4 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 
 # Information sources
 
-Creative Labs Soundblaster products listing [https://support.creative.com/kb/ShowArticle.aspx?sid=10846]
+[Creative Labs Soundblaster products listing](https://support.creative.com/kb/ShowArticle.aspx?sid=10846)
