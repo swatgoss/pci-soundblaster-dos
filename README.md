@@ -5,3 +5,8 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 
 - CT4870
   - DOS 6.22
+
+
+# Information sources
+
+Creative Labs Soundblaster products listing [https://support.creative.com/kb/ShowArticle.aspx?sid=10846]
