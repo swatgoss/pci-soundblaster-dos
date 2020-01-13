@@ -16,6 +16,8 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 
 [Vogons Vintage Driver Library : Sound Devices](http://vogonsdrivers.com/index.php?catid=3&menustate=36,0)
 
+[Wikipedia page : Ensoniq AudioPCI](https://en.wikipedia.org/wiki/Ensoniq_AudioPCI)
+
 [Wikipedia page : SoundBlaster](https://en.wikipedia.org/wiki/Sound_Blaster)
 
 [Wikipedia page : SoundBlaster 16](https://en.wikipedia.org/wiki/Sound_Blaster_16)
