@@ -6,7 +6,18 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 - CT4870
   - DOS 6.22
 
+- SB0350
+  - DOS 6.22
+  - Win98 SE
 
-# Information sources
+# External Information sources
 
 [Creative Labs Soundblaster products listing](https://support.creative.com/kb/ShowArticle.aspx?sid=10846)
+
+[Wikipedia page : SoundBlaster](https://en.wikipedia.org/wiki/Sound_Blaster)
+
+[Wikipedia page : SoundBlaster 16](https://en.wikipedia.org/wiki/Sound_Blaster_16)
+
+[Wikipedia page : Soundblaster Audigy](https://en.wikipedia.org/wiki/Sound_Blaster_Audigy)
+
+[Wikipedia page : Soundblaster Live!](https://en.wikipedia.org/wiki/Sound_Blaster_Live!)
