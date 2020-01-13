@@ -14,6 +14,8 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 
 [Creative Labs Soundblaster products listing](https://support.creative.com/kb/ShowArticle.aspx?sid=10846)
 
+[Vogons Vintage Driver Library : Sound Devices](http://vogonsdrivers.com/index.php?catid=3&menustate=36,0)
+
 [Wikipedia page : SoundBlaster](https://en.wikipedia.org/wiki/Sound_Blaster)
 
 [Wikipedia page : SoundBlaster 16](https://en.wikipedia.org/wiki/Sound_Blaster_16)
