@@ -1,5 +1,5 @@
 # pci-soundblaster-dos
-Utilities, configuration and information about using SoundBlaster Emulation on PCI soundcards (EMU10K1, ES137x, Yamaha, ...) or southbridges (via vx800)
+Utilities, configuration and information about using SoundBlaster Emulation on PCI soundcards (EMU10K1, ES137x, Yamaha 7x4, ...) or southbridges (VIA VX800) or sound accessories (OPL3LPT)
 
 Every card will have a dedicated folder with subfolders for every documented OS version
 
