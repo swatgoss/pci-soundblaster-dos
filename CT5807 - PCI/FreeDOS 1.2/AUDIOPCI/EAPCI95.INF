@@ -1,0 +1,281 @@
+; 1371 + 1373
+; Creative Sound Blaster AudioPCI 64V INF file
+;
+; Created : 09/15/96  jjc
+; modfied : 10/29/98  dws
+; modfied : 01/22/99  der
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+provider=%Creative%
+
+;[ControlFlags]
+
+[ClassInstall]
+AddReg=Class.AddReg
+
+[Class.AddReg]
+HKR,,,,%MediaClassName%
+HKR,,Icon,,1
+HKR,,Installer,,mmci.dll
+
+[Manufacturer]
+%MfgName%=CREATIVE
+
+[CREATIVE]
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_13711274   ; Concert AC97 PCI board
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_4f438086   ; Intel OC440LX 
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_52438086   ; Intel RC440BX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_57538086   ; Intel WS440BX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_42498086   ; Intel BI440ZX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_424c8086   ; Intel BL440ZX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_425a8086   ; Intel BZ440ZX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371&SUBSYS_464a8086   ; Intel FJ440ZX
+%DEV_1371.DeviceDesc%=DEV1371.Device,PCI\VEN_1274&DEV_1371                   ; Concert AC97 PCI board
+%SSC-Legacy.DeviceDesc%=SSC_Legacy_Device, VIRTUAL\SSC-Legacy
+%ENSJoy.DeviceDesc%=ENSJoy.Device, VIRTUAL\*PNPB02F
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+;---------------------------------------------------------------;
+[DEV1371.Device]
+UpdateAutoBat=Soundscape.UpdateAutoBat
+DelFiles=Soundscape.DeleteList
+CopyFiles=sscncrt.SystemCopyList,sscncrt.SetupCopyList,sscncrt.WinDirCopyList,sscncrt.HelpDirCopyList,sscncrt.DOSCopyList,sscncrt.IosubsysCopyList
+AddReg=WAVE.AddReg, MIXER.AddReg, E4080.AddReg, sscncrt.AddReg, A3D.AddReg
+
+[SSC_Legacy_Device]
+AddReg=SSC_Legacy_Device.AddReg
+
+[ENSJoy.Device]
+CopyFiles=MSJSTICK.CopyList
+AddReg=JOYSTICK.AddReg, MSJSTICK.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+
+[Soundscape.UpdateAutoBat]
+CmdDelete=SSINIT.EXE
+
+;---------------------------------------------------------------;
+
+[Soundscape.DeleteList]
+sndscape.drv,,
+vsndscp.386,,
+sscape.cpl,,
+sndscape.hlp,,
+concert.vxd,,
+
+[sscncrt.SystemCopyList]
+es1371.vxd,,
+es137195.drv,,
+enres16.dll,,
+a3d.dll,,
+ac3api.dll,,
+
+; wavesets
+eapci2m.ecw,,
+default.ecw,eapci2m.ecw,
+eapci4m.ecw,,
+eapci8m.ecw,,
+
+[sscncrt.SetupCopyList]
+sbsetup.exe,,
+clnutl32.dll,,
+clnutl16.dll,,
+clnutil.dll,,
+iwlang.dll,,
+
+[sscncrt.WinDirCopyList]
+ensmix32.exe,,
+starter.exe,,
+mixres32.dll,,
+sndscape.ini,eapci_ss.ini,
+
+[sscncrt.HelpDirCopyList]
+eapci95.hlp,,
+
+[sscncrt.IosubsysCopyList]
+ensqio.vxd,,
+
+[sscncrt.DOSCopyList]
+mt32.exe,,
+apinit.com,,
+aplegacy.exe,,
+apload.exe,,
+apmixer.exe,,
+aptest.exe,,
+audiopci.bin,,
+dos4gw.exe,,
+apconfig.exe,,
+
+[MSJSTICK.CopyList]
+vjoyd.vxd,,
+msjstick.drv,,
+
+;---------------------------------------------------------------;
+
+[E4080.AddReg]
+HKR,Drivers\wave\es137195.drv,Description,,%DEV_1371.DeviceDesc%
+HKR,Drivers\mixer\es137195.drv,Description,,%DEV_1371.DeviceDesc%
+HKR,Drivers\aux\es137195.drv,Description,,%DEV_1371.DeviceDesc%
+HKR,Drivers\midi\ENSONIQ_Synth,Description,,%ENSxxxx.InternalMIDI%
+HKR,Drivers\midi\ENSONIQ_Out,Description,,%ENSxxxx.ExternalMIDI%
+
+[sscncrt.AddReg]
+HKR,,Driver,,es1371.vxd
+HKR,Drivers\wave\es137195.drv,,,
+HKR,Drivers\wave\es137195.drv,Driver,,es137195.drv
+HKR,Drivers\mixer\es137195.drv,,,
+HKR,Drivers\mixer\es137195.drv,Driver,,es137195.drv
+HKR,Drivers\aux\es137195.drv,,,
+HKR,Drivers\aux\es137195.drv,Driver,,es137195.drv
+HKR,Drivers\midi\ENSONIQ_Synth,Driver,,es137195.drv
+HKR,Drivers\midi\ENSONIQ_Synth,External,1,00,00,00,00
+HKR,Drivers\midi\ENSONIQ_Synth,NumPorts,1,02,00,00,00
+HKR,Drivers\midi\ENSONIQ_Synth,Port,1,00,00,00,00
+HKR,Drivers\midi\ENSONIQ_Out,Driver,,es137195.drv
+HKR,Drivers\midi\ENSONIQ_Out,External,1,01,00,00,00
+HKR,Drivers\midi\ENSONIQ_Out,NumPorts,1,02,00,00,00
+HKR,Drivers\midi\ENSONIQ_Out,Port,1,01,00,00,00
+HKR,Drivers,SubClasses,,"wave,midi,aux,mixer"
+HKR,,EnumPropPages,,"es137195.drv,DrvEnumPropPages"
+
+; adds the URL to the driver about box
+HKLM,Software\ENSONIQ\EAPCI,URL,,%URL%
+
+; this key tells the driver that the DOS files are installed
+HKLM,Software\ENSONIQ\EAPCI,%EapciKey%,,"%24%\%DOSDir%"
+
+; adds keys for our wavesets
+HKLM,Software\ENSONIQ\Waveset,current,1,00,00,00,00
+HKLM,Software\ENSONIQ\Waveset\0000,Filename,,"%11%\eapci2m.ecw"
+HKLM,Software\ENSONIQ\Waveset\0000,Title,,"2 Megabyte General MIDI"
+HKLM,Software\ENSONIQ\Waveset\0001,Filename,,"%11%\eapci4m.ecw"
+HKLM,Software\ENSONIQ\Waveset\0001,Title,,"4 Megabyte General MIDI"
+HKLM,Software\ENSONIQ\Waveset\0002,Filename,,"%11%\eapci8m.ecw"
+HKLM,Software\ENSONIQ\Waveset\0002,Title,,"8 Megabyte General MIDI"
+
+;Things that run on startup
+HKLM, Software\Microsoft\Windows\CurrentVersion\Run, EAPCISetup, ,"%24%\%DOSDir%\sbsetup.exe"
+HKLM, Software\Microsoft\Windows\CurrentVersion\Run, SystemTray, , "SysTray.ExE"
+
+; uninstall entry for Add-Remove Programs
+HKLM,Software\Microsoft\Windows\CurrentVersion\Uninstall\SBPCIUnInstall,DisplayName,,"Creative Sound Blaster PCI Audio Drivers"
+HKLM,Software\Microsoft\Windows\CurrentVersion\Uninstall\SBPCIUnInstall,UninstallString,,"%24%\%DOSDir%\sbsetup.exe u"
+
+[WAVE.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,,,
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\midi,,,
+HKR,Drivers\wave,,,
+HKR,Drivers\mixer,,,
+HKR,Drivers\aux,,,
+
+[SSC_Legacy_Device.AddReg]
+HKR,,DeviceDriver,,es1371.vxd
+HKR,,DevLoader,,*CONFIGMG
+HKR,,SBEmu,1,01
+HKR,,EnumPropPages,,"es137195.drv,DrvEnumLegacyPages"
+
+[A3D.AddReg]
+HKCR,A3D,,,"A3d Object"
+HKCR,A3D\CLSID,,,"{D8F1EEE0-F634-11CF-8700-00A0245D918B}"
+HKCR,CLSID\{D8F1EEE0-F634-11CF-8700-00A0245D918B},,,"A3D Object"
+HKCR,CLSID\{D8F1EEE0-F634-11CF-8700-00A0245D918B}\InprocServer32,,,"A3D.DLL"
+HKCR,CLSID\{D8F1EEE0-F634-11CF-8700-00A0245D918B}\InprocServer32,"ThreadingModel", ,"Apartment"
+;---------------------------------------------------------------;
+
+[JOYSTICK.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\joystick,,,
+
+[MSJSTICK.AddReg]
+HKR,,Driver,,vjoyd.vxd
+HKR,Drivers\joystick\msjstick.drv,Description,,%ENSJoy.DeviceDesc%
+HKR,Drivers\joystick\msjstick.drv,Driver,,msjstick.drv
+HKR,Drivers,SubClasses,,"joystick"
+
+[MSJSTICK.UpdateInis]
+system.ini,drivers,"joystick="
+
+;---------------------------------------------------------------;
+
+[DestinationDirs]
+DefaultDestDir          = 11            ; LDID_SYS
+sscncrt.SystemCopyList  = 11
+sscncrt.WinDirCopyList  = 10
+sscncrt.HelpDirCopyList = 18
+sscncrt.SetupCopyList   = 24,%DOSDir%
+sscncrt.IosubsysCopyList= 12            ; LDID_IOS
+sscncrt.DOSCopyList     = 24,%DOSDir%   ; LDID_APPS + DOSDir
+MSJSTICK.CopyList       = 11
+
+[SourceDisksNames]
+1="Creative Sound Blaster AudioPCI 64V Driver Disk",,0000-0000
+
+[SourceDisksFiles]
+es137195.drv=1
+enres16.dll=1
+es1371.vxd=1
+ensmix32.exe=1
+starter.exe=1
+mixres32.dll=1
+eapci95.hlp=1
+eapci_ss.ini=1
+a3d.dll=1
+ensqio.vxd=1
+ac3api.dll=1
+
+; wavesets
+eapci2m.ecw=1,..\..\common\wavesets
+eapci4m.ecw=1,..\..\common\wavesets
+eapci8m.ecw=1,..\..\common\wavesets
+
+; setup files
+sbsetup.exe=1
+clnutil.dll=1
+clnutl32.dll=1
+clnutl16.dll=1
+iwlang.dll=1
+
+; DOS files
+mt32.exe=1
+apinit.com=1
+aplegacy.exe=1
+apload.exe=1
+apmixer.exe=1
+aptest.exe=1
+audiopci.bin=1
+dos4gw.exe=1
+apconfig.exe=1
+
+; joystick files
+msjstick.drv=1,..\..\..\directx\directx\drivers\eng
+vjoyd.vxd=1,..\..\..\directx\directx\drivers\eng
+
+;---------------------------------------------------------------;
+
+[Strings]
+ENSONIQ="ENSONIQ"
+Creative="Creative"
+MfgName="Creative"
+DEV_1371.DeviceDesc="Creative Sound Blaster AudioPCI 64V"
+SSC-Legacy.DeviceDesc="SB AudioPCI 64V Legacy Device"
+ENSJoy.DeviceDesc="Creative Gameport Joystick"
+DOSDir="SBPCI"
+EapciKey="EAPCI Path"
+
+ENSxxxx.ExternalMIDI="SB AudioPCI 64V External MIDI Port"
+ENSxxxx.InternalMIDI="SB AudioPCI 64V Internal Synth"
+
+MediaClassName="Sound, video and game controllers"
+V_CLSWAVEFORM="Audio"
+V_CLSMIDI="MIDI"
+V_CLSMIXER="Mixer"
+V_CLSAUX="Auxiliary"
+V_GENERAL="General MIDI Instrument"
+URL="http://www.ensoniq.com"

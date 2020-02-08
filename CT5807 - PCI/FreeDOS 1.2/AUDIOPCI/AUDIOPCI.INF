@@ -1,0 +1,230 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 1371+1373 Sound Blaster AudioPCI 64V
+; mac 09-11-98: new-style INF for NT40 silent installer
+; der 01-21-99
+;
+[Version]
+Signature="$Windows NT$"
+ClassGuid={4D36E96C-E325-11CE-BFC1-08002BE10318}
+Class=MEDIA
+Provider=%CLMfgName%
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; product-specific
+;
+[Strings]
+ProductLong = "Creative Sound Blaster AudioPCI 64V"
+ProductShort = "SB AudioPCI 64V"
+V_INTERNAL = "SB AudioPCI 64V MIDI Synth"
+V_EXTERNAL = "SB AudioPCI 64V MIDI Out"
+;
+; nothing below here should need to be changed to rename
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;
+; install information
+;
+[Install.NT]
+CopyFiles=Waveset2.FileList, System32.FileList, Drivers.FileList
+AddReg=Product_MIDI.Reg, Product_desc.Reg
+AddReg=Waveset2.Reg
+AddReg=es1371_MIDI.Reg, es1371_Drivers32.Reg, es1371_Device0.Reg
+;
+[Install.NT.Services]
+AddService = es137140, 0x00000002, Product_Service_Inst
+AddService = ensqio, 0x00000002, ensqio_Service_Inst
+
+;
+; uninstall information
+;
+; should be the same as install, except tagged as delete
+; except for one extra delete registry section
+;
+[Uninstall.NT]
+; note these are same as install except tagged as delete
+DelFiles=Waveset2.FileList, System32.FileList, Drivers.FileList
+DelReg=Product_MIDI.Reg, Product_desc.Reg
+DelReg=Waveset2.Reg
+DelReg=es1371_MIDI.Reg, es1371_Drivers32.Reg, es1371_Device0.Reg
+; below is the only extra entry for uninstall
+DelReg=es1371.DelReg
+;
+[Uninstall.NT.Services]
+; note these are same as install except tagged as delete
+DelService = es137140, 0x00000002, Product_Service_Inst
+DelService = ensqio, 0x00000002, ensqio_Service_Inst
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; product (name)-specific information
+;
+[Product_MIDI.Reg]
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","Description",0000000000,%V_INTERNAL%
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","FriendlyName",0000000000,%V_INTERNAL%
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","Description",0000000000,%V_EXTERNAL%
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","FriendlyName",0000000000,%V_EXTERNAL%
+;
+[Product_desc.Reg]
+HKR,"drivers.desc","es1371.dll",0000000000,%ProductShort%
+;
+[Product_Service_Inst]
+DisplayName    = "SB AudioPCI 64V"
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\es137140.sys
+LoadOrderGroup = Base
+
+;
+; this is waveset info for the 2 meg set only
+; if we include other wavesets, use another section.
+;
+[Waveset2.Reg]
+HKLM,"SOFTWARE\ENSONIQ\Waveset",,
+HKLM,"SOFTWARE\ENSONIQ\Waveset","current",0x00010001,2
+HKLM,"SOFTWARE\ENSONIQ\Waveset\0002","Filename",0000000000,"%11%\eapci2m.ecw"
+HKLM,"Software\ENSONIQ\Waveset\0002","Title",0000000000,"2 Megabyte General MIDI"
+
+; Add Starter to Run key
+HKLM, "Software\Microsoft\Windows\CurrentVersion\Run", "EnsoniqMixer", ,"%11%\starter.exe"
+
+;
+; device-specific information
+;
+[es1371_MIDI.Reg]
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","Active",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","DeviceID",0000000000,""
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","DevNode",0x00000001,
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","Driver",0000000000,"es1371.dll"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","External",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","PhysDevID",0x00010001,0
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","Port",0x00010001,0
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","MapperConfig",0x00010001,0
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","SOFTWAREKEY",0000000000,""
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>","Migrated",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0000>\Instruments",,0x00000010
+;
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","Active",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","DeviceID",0000000000,""
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","DevNode",0x00000001,
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","Driver",0000000000,"es1371.dll"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","External",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","PhysDevID",0x00010001,0
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","Port",0x00010001,1
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","MapperConfig",0x00010001,1
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","SOFTWAREKEY",0000000000,""
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>","Migrated",0000000000,"1"
+HKLM,"SYSTEM\CurrentControlSet\Control\MediaResources\MIDI\es1371.dll<0001>\Instruments",,0x00000010
+;
+[es1371_Drivers32.Reg]
+HKR,"Drivers32","aux",0000000000,"es1371.dll"
+HKR,"Drivers32","midi",0000000000,"es1371.dll"
+HKR,"Drivers32","mixer",0000000000,"es1371.dll"
+HKR,"Drivers32","wave",0000000000,"es1371.dll"
+;
+[es1371_Device0.Reg]
+HKLM,"SYSTEM\CurrentControlSet\Services\es137140\Parameters\Device0",,
+;
+[es1371.DelReg]
+HKLM,"HARDWARE\RESOURCEMAP\OtherDrivers\es137140",,
+;
+[ensqio_Service_Inst]
+DisplayName    = "ensqio"
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ensqio.sys
+LoadOrderGroup = Filter
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; file information
+;
+[System32.FileList]
+es1371.dll
+enres32.dll
+mixres32.dll
+ensmix32.exe
+starter.exe
+;
+[Waveset2.FileList]
+eapci2m.ecw
+;
+[Drivers.FileList]
+es137140.sys
+ensqio.sys
+;
+[DestinationDirs]
+System32.FileList = 11 ; DIRID_SYSTEM
+Drivers.FileList = 12 ; DIRID_DRIVERS
+Waveset2.FileList = 11 ; DIRID_SYSTEM
+;
+[SourceDisksNames]
+1 = %DiskId%,,,.
+;
+[SourceDisksFiles]
+es137140.sys = 1
+es1371.dll = 1
+eapci2m.ecw = 1,..\..\common\wavesets
+ensmix32.exe = 1
+mixres32.dll = 1
+enres32.dll = 1
+ensqio.sys = 1
+starter.exe = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Localizable text.
+;
+[Strings]
+MSFT = "Microsoft"
+MediaClassName = "Sound, video and game controllers"
+CLMfgName = "Creative Technology, Ltd."
+; doesn't seem to work... es137140.SvcDesc = %ProductShort%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; mac 9-11-1998: these are all commented out because NT40
+;                doesn't do the plug and play thing anyway!
+;		 instead, the installer should specifically
+;		 install the right sections.
+;[Manufacturer]
+;%CLMfgName%=CreativeLabs
+;
+;[CreativeLabs]
+;
+; NOTE:  We omit hardware IDs for each of these devices, so that the user will
+;        be able to supply an OEM-supplied driver with fuller functionality at
+;        the "Found New Hardware" popup.
+;
+;%*SBAP64V.DeviceDesc%=SBAP64V_Device,, *SBAP64V
+;%*PNPB02F.DeviceDesc%=MSJSTICK,,       *CTL7001
+;
+;
+; commented-out joystick stuff... may be incorrect.
+;
+;*PNPB02F.DeviceDesc = "Microsoft Joystick Port Enabler"
+;joyport.SvcDesc = "Microsoft Joystick Port Driver"
+;
+;[MSJSTICK.NT]
+;CopyFiles=joyportdll.CopyList,joyportsys.CopyList
+;AddReg=MSJSTICK.AddReg
+;Reboot
+;
+;[MSJSTICK.AddReg]
+;HKR,Drivers\jport\joyport.dll,Description,,%*PNPB02F.DeviceDesc%
+;HKR,Drivers\jport\joyport.dll,Driver,,joyport.dll
+;HKR,Drivers,SubClasses,,"jport"
+;
+;[MSJSTICK.NT.Services]
+;AddService = joyport, 0x00000002, joyport_Service_Inst
+;
+;[joyport_Service_Inst]
+;DisplayName    = %joyport.SvcDesc%
+;ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+;StartType      = 1                  ; SERVICE_SYSTEM_START
+;ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+;ServiceBinary  = %12%\joyport.sys
+;LoadOrderGroup = Base
