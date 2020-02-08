@@ -3,18 +3,23 @@ Utilities, configuration and information about using SoundBlaster Emulation on P
 
 Every card will have a dedicated folder with subfolders for every documented OS version
 
-- CT4870
-  - DOS 6.22
+- Creative
+  - CT4870
+    - DOS 6.22
 
-- CT5807
-  - FreeDOS 1.2
+  - CT5807
+    - FreeDOS 1.2
   
-- SB0350
-  - DOS 6.22
-  - Win98 SE
-  
-- VX800
-  - Programming Manual + description
+  - SB0350
+    - DOS 6.22
+    - Win98 SE
+
+- ENSONIQ
+  - AudioPCI 3000
+
+- VIA
+  - VX800
+    - Programming Manual + description
 
 # External Information sources
 
