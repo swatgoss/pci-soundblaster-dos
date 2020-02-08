@@ -22,7 +22,7 @@ Based on [Vogons "Ensoniq AudioPCI DOS Drivers"](http://vogonsdrivers.com/getfil
 
 
 # Misc informations
-The card is low profile, appears to be a DELL 0088GF.
+The card is low profile, appears to be a DELL 0088GF and correspond to Creative's product "Sound Blaster Audio Pci 64 Dell oem"
 
 Tested on ASROCK K7VT4A Pro :
 - PCI slots 1 and 4 interfere with PCI device detection by the driver
