@@ -6,6 +6,9 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 - CT4870
   - DOS 6.22
 
+- CT5807
+  - FreeDOS 1.2
+  
 - SB0350
   - DOS 6.22
   - Win98 SE
