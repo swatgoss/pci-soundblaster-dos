@@ -7,3 +7,4 @@ Will need to test some setpci routines or something like this to enable SB Emula
 
 # Misc informations
 
+Found as southbridge in HP T5540 thinclient [ParkyTowers link](https://www.parkytowers.me.uk/thin/hp/t5540/)
