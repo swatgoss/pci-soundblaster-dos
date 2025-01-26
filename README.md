@@ -23,6 +23,8 @@ Every card will have a dedicated folder with subfolders for every documented OS 
 
 # External Information sources
 
+[SBEMU "Emulate Sound Blaster and OPL3 in pure DOS on modern sound cards"](https://github.com/crazii/SBEMU)
+
 [Creative Labs Soundblaster products listing](https://support.creative.com/kb/ShowArticle.aspx?sid=10846)
 
 [Vogons Vintage Driver Library : Sound Devices](http://vogonsdrivers.com/index.php?catid=3&menustate=36,0)
