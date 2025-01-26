@@ -2,8 +2,8 @@
 VT8237R ?
 
 # DOS 6.22
-According to Programming Manual PDF (page 391 & 395), the audio chip inherits SoundBlaster emulation
-Will need to test some setpci routines or something like this to enable SB Emulation
+~~According to Programming Manual PDF (page 391 & 395), the audio chip inherits SoundBlaster emulation
+Will need to test some setpci routines or something like this to enable SB Emulation~~
 
 TODO, test SBEMU compatibility with VX800 as sc_via82 supports VT8237
 
